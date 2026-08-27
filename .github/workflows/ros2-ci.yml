@@ -12,7 +12,14 @@ jobs:
       - uses: ros-tooling/setup-ros@v0.7
         with:
           required-ros-distributions: humble
+      - name: Install ROS 2 middleware and type support
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y             ros-humble-rmw-fastrtps-cpp             ros-humble-rosidl-typesupport-fastrtps-c             ros-humble-rosidl-typesupport-fastrtps-cpp
       - uses: ros-tooling/action-ros-ci@v0.4
+        env:
+          RMW_IMPLEMENTATION: rmw_fastrtps_cpp
         with:
           package-name: planner_interfaces unordered_task_planner grid_motion_planner planner_bringup
           target-ros2-distro: humble
+          coverage-result: false
