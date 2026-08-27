@@ -8,8 +8,10 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/CoverageCandidate.msg"
+  "msg/TaskVisit.msg"
   "srv/ComputeSetCover.srv"
   "srv/PlanGridPath.srv"
+  "srv/PlanUnorderedTasks.srv"
   DEPENDENCIES geometry_msgs nav_msgs
 )
 
