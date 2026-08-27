@@ -13,5 +13,9 @@ add_executable(set_cover_node src/set_cover_node.cpp)
 target_compile_features(set_cover_node PUBLIC cxx_std_17)
 ament_target_dependencies(set_cover_node rclcpp planner_interfaces)
 
-install(TARGETS set_cover_node DESTINATION lib/${PROJECT_NAME})
+add_executable(dijkstra_node src/dijkstra_node.cpp)
+target_compile_features(dijkstra_node PUBLIC cxx_std_17)
+ament_target_dependencies(dijkstra_node rclcpp planner_interfaces)
+
+install(TARGETS set_cover_node dijkstra_node DESTINATION lib/${PROJECT_NAME})
 ament_package()
