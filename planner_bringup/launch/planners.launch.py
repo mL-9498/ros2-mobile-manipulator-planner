@@ -19,6 +19,12 @@ def generate_launch_description():
             output="screen",
         ),
         Node(
+            package="unordered_task_planner",
+            executable="dijkstra_node",
+            name="dijkstra_task_planner",
+            output="screen",
+        ),
+        Node(
             package="grid_motion_planner",
             executable="astar_node",
             name="grid_motion_planner",
