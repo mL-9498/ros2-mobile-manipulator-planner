@@ -1,0 +1,10 @@
+int32 task_count
+planner_interfaces/CoverageCandidate[] candidates
+float64[] travel_cost_matrix
+int32 start_base_id
+---
+bool success
+planner_interfaces/TaskVisit[] visits
+float64 total_cost
+int32 expanded_states
+string message
