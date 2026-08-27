@@ -1,0 +1,6 @@
+int32 task_count
+planner_interfaces/CoverageCandidate[] candidates
+---
+bool success
+int32[] selected_base_ids
+string message
