@@ -1,0 +1,11 @@
+build/
+install/
+log/
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+*.bag
+*.db3
+*.npz
+.DS_Store
