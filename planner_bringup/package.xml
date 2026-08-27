@@ -2,13 +2,19 @@
 <package format="3">
   <name>planner_bringup</name>
   <version>0.1.0</version>
-  <description>Launch and configuration files for planner demonstrations.</description>
+  <description>Launch, synthetic demonstrations and RViz configuration.</description>
   <maintainer email="maintainer@example.com">Miao Li</maintainer>
   <license>Apache-2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>grid_motion_planner</exec_depend>
-  <exec_depend>unordered_task_planner</exec_depend>
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>planner_interfaces</exec_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>unordered_task_planner</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
   <export><build_type>ament_cmake</build_type></export>
 </package>
