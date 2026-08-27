@@ -12,7 +12,7 @@ The project separates two planning problems:
 
 A shared grid-based A* planner provides obstacle-aware motion costs and paths between base poses.
 
-> Status: early development. The repository is being refactored from research prototypes into reusable ROS 2 packages. Thesis-specific datasets and documents are intentionally excluded.
+> Status: active development. Thesis-specific datasets and documents are intentionally excluded.
 
 ## Target environment
 
@@ -21,16 +21,15 @@ A shared grid-based A* planner provides obstacle-aware motion costs and paths be
 - C++17
 - Python 3
 
-## Planned packages
+## Packages
 
 | Package | Purpose |
 |---|---|
 | `planner_interfaces` | Shared ROS messages and services |
-| `planner_core` | Common geometry, task and planning data structures |
-| `unordered_task_planner` | Set Cover, Dijkstra and PDDL strategies |
-| `grid_motion_planner` | Grid-based A* path planning |
-| `task_consistent_rrt_star` | Continuous ordered-task planning in base pose/task-progress space |
-| `planner_bringup` | Launch files, parameters and demonstrations |
+| `unordered_task_planner` | Exact Set Cover now; Dijkstra and PDDL planned |
+| `grid_motion_planner` | 8-connected, obstacle-aware grid A* |
+| `planner_bringup` | Synthetic scenario, launch files and RViz configuration |
+| `task_consistent_rrt_star` | Continuous ordered-task planning (planned) |
 
 ## Architecture
 
@@ -55,18 +54,45 @@ cd ..
 source /opt/ros/humble/setup.bash
 rosdep install --from-paths src --ignore-src -r -y
 colcon build --symlink-install
+source install/setup.bash
 ```
+
+## Run the synthetic RViz demo
+
+```bash
+ros2 launch planner_bringup planners.launch.py
+```
+
+The demo uses only generated data:
+
+- red spheres: unordered task points
+- blue cubes: candidate mobile-base poses
+- green cubes: minimum-cardinality poses selected by Set Cover
+- gray cells: occupied grid cells
+- orange line: collision-free A* path between selected poses
+
+Console output reports the selected base IDs, path pose count and path length.
+
+## Implemented behavior
+
+- Exact minimum-cardinality Set Cover with branch-and-bound pruning
+- ROS 2 service interfaces for coverage selection and grid path planning
+- 8-connected A* with diagonal corner-cut prevention
+- Synthetic occupancy grid and task/base-pose scenario
+- RViz map, marker and path visualization
+- GitHub Actions build and test on ROS 2 Humble
 
 ## Roadmap
 
 - [x] Define repository architecture
-- [ ] Add common ROS 2 interfaces
-- [ ] Add a minimal Set Cover node
-- [ ] Add a grid-based A* node
+- [x] Add common ROS 2 interfaces
+- [x] Add exact Set Cover node
+- [x] Add grid-based A* node
+- [x] Add a synthetic RViz demonstration
 - [ ] Add Dijkstra state-space planning
 - [ ] Add PDDL problem generation and plan parsing
 - [ ] Refactor Task-consistent RRT* into a ROS 2 node
-- [ ] Add RViz demonstrations and automated tests
+- [ ] Add algorithm-level unit and integration tests
 
 ## Data policy
 
