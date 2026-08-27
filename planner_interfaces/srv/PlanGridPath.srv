@@ -1,0 +1,13 @@
+uint32 width
+uint32 height
+float64 resolution
+float64 origin_x
+float64 origin_y
+int8[] occupancy
+geometry_msgs/Pose2D start
+geometry_msgs/Pose2D goal
+---
+bool success
+nav_msgs/Path path
+float64 path_length
+string message
