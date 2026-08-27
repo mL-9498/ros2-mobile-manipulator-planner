@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>unordered_task_planner</name>
+  <version>0.1.0</version>
+  <description>Set Cover, Dijkstra and PDDL strategies for unordered mobile-manipulator tasks.</description>
+  <maintainer email="maintainer@example.com">Miao Li</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>planner_interfaces</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>
