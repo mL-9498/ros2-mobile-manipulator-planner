@@ -26,7 +26,7 @@ A shared grid-based A* planner provides obstacle-aware motion costs and paths be
 | Package | Purpose |
 |---|---|
 | `planner_interfaces` | Shared ROS messages and services |
-| `unordered_task_planner` | Exact Set Cover now; Dijkstra and PDDL planned |
+| `unordered_task_planner` | Exact Set Cover and Dijkstra state-space planning; PDDL planned |
 | `grid_motion_planner` | 8-connected, obstacle-aware grid A* |
 | `planner_bringup` | Synthetic scenario, launch files and RViz configuration |
 | `task_consistent_rrt_star` | Continuous ordered-task planning (planned) |
@@ -69,7 +69,7 @@ The demo uses only generated data:
 - blue cubes: candidate mobile-base poses
 - green cubes: minimum-cardinality poses selected by Set Cover
 - gray cells: occupied grid cells
-- orange line: collision-free A* path between selected poses
+- orange numbers: Dijkstra visit order\n- orange line: collision-free A* paths along the Dijkstra sequence
 
 Console output reports the selected base IDs, path pose count and path length.
 
@@ -89,7 +89,7 @@ Console output reports the selected base IDs, path pose count and path length.
 - [x] Add exact Set Cover node
 - [x] Add grid-based A* node
 - [x] Add a synthetic RViz demonstration
-- [ ] Add Dijkstra state-space planning
+- [x] Add Dijkstra state-space planning
 - [ ] Add PDDL problem generation and plan parsing
 - [ ] Refactor Task-consistent RRT* into a ROS 2 node
 - [ ] Add algorithm-level unit and integration tests
